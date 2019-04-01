@@ -15,17 +15,21 @@ function palindrome(string) {
 function Phrase(content) {
   this.content = content;
 
+  this.letters = function letters(){
+      return (this.content.match(/[a-z]/gi) || []).join("");
+  }
+
   this.processor = function(string) {
-    return string.toLowerCase();
+      return string.toLowerCase();
   }
 
   this.processedContent = function processedContent() {
-    return this.processor(this.content);
+      return this.processor(this.letters());
   }
 
   // Returns true if the phrase is a palindrome, false otherwise.
   this.palindrome = function palindrome() {
-    return this.processedContent() === this.processedContent().reverse();
+      return this.processedContent() === this.processedContent().reverse();
   }
 }
 
